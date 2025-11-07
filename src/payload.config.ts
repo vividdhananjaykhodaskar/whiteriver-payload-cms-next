@@ -17,6 +17,7 @@ import { Navigation } from './collections/Navigation'
 import { Services } from './collections/Services'
 import { SisterSites } from './collections/SisterSites'
 import { SiteSettings } from './collections/SiteSettings'
+import { AboutUs } from './collections/AboutUs'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,7 +36,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media,Magazines,Navigation,Services,SisterSites],
-  globals:[ContactInfo,HeroSection,SiteSettings],
+  globals:[ContactInfo,HeroSection,SiteSettings,AboutUs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
