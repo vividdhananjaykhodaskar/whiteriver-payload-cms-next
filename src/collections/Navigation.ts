@@ -35,5 +35,13 @@ export const Navigation: CollectionConfig = {
         description: 'Check if this link goes to an external site',
       },
     },
+    {
+      name: 'isLoginButton',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description: 'Check if this item should be shown as a Login button',
+      },
+    },
   ],
 }
