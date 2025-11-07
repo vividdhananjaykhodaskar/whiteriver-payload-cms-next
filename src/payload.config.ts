@@ -34,7 +34,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,ContactInfo,HeroSection,Magazines,Navigation,Services,SisterSites,SiteSettings],
+  collections: [Users, Media,Magazines,Navigation,Services,SisterSites],
+  globals:[ContactInfo,HeroSection,SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
