@@ -27,6 +27,11 @@ export const SiteSettings: GlobalConfig = {
           defaultValue: 'Our Services',
         },
         {
+          name: 'bookStore',
+          type: 'text',
+          defaultValue: 'Book Store',
+        },
+        {
           name: 'magazines',
           type: 'text',
           defaultValue: 'Our Magazines',
