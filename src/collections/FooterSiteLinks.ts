@@ -1,36 +1,40 @@
 import type { CollectionConfig } from 'payload'
 
-export const FooterSiteLinks: CollectionConfig = {
+export const FooterSiteLinks : CollectionConfig = {
   slug: 'footer-site-links',
+  admin: {
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'order', 'isActive', 'url'],
+  },
+
   access: {
     read: () => true, // Public read access
   },
-  fields: [
+
+   fields: [
     {
-      name: 'links',
-      label: 'Footer Links',
-      type: 'array',
-      minRows: 1,
-      fields: [
-        {
-          name: 'title',
-          label: 'Link Title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'url',
-          label: 'Link URL',
-          type: 'text',
-          required: true,
-        },
-      ],
+      name: 'title',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'order',
+      type: 'number',
+      required: true,
     },
     {
       name: 'isActive',
       type: 'checkbox',
-      label: 'Active',
       defaultValue: true,
+    },
+
+    {
+      name: 'url',
+      type: 'text',
+      required: true,
+      admin: {
+        placeholder: 'https://...',
+      },
     },
   ],
 }
