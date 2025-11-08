@@ -19,8 +19,7 @@ import { SisterSites } from './collections/SisterSites'
 import { SiteSettings } from './collections/SiteSettings'
 import { AboutUs } from './collections/AboutUs'
 import { BookStore } from './collections/BookStore'
-import { FooterSiteLinks } from './collections/FooterSiteLinks'
-
+import { FooterLinks } from "./collections/FooterLinks";
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -37,7 +36,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,Magazines,Navigation,Services,SisterSites,BookStore,FooterSiteLinks],
+  collections: [Users, Media,Magazines,Navigation,Services,SisterSites,BookStore, FooterLinks],
   globals:[ContactInfo,HeroSection,SiteSettings,AboutUs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
