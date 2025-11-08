@@ -20,6 +20,7 @@ import { SiteSettings } from './collections/SiteSettings'
 import { AboutUs } from './collections/AboutUs'
 import { BookStore } from './collections/BookStore'
 import { FooterLinks } from './collections/FooterLinks'
+import { FooterMenu } from './collections/FooterMenu'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,7 +38,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,Magazines,Navigation,Services,SisterSites,BookStore, FooterLinks],
+  collections: [Users, Media,Magazines,Navigation,Services,SisterSites,BookStore, FooterLinks,FooterMenu],
   globals:[ContactInfo,HeroSection,SiteSettings,AboutUs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
