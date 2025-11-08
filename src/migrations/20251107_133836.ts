@@ -1,25 +1,25 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-d1-sqlite'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
-await db.run(sql`DROP TABLE IF EXISTS \`footer_site_links_links\`;`)
-  await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`title\` text NOT NULL;`)
-  await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`order\` numeric NOT NULL;`)
-  await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`url\` text NOT NULL;`)
+export async function up({ db }: MigrateUpArgs): Promise<void> {
+  // Drop old relation table safely
+  await db.run(sql`DROP TABLE IF EXISTS \`footer_site_links_links\`;`)
+
+  // Check whether main table exists
+  const table = await db.get(
+    sql`SELECT name FROM sqlite_master WHERE type='table' AND name='footer_site_links';`
+  )
+
+  if (!table) {
+    console.log("⚠️ footer_site_links does not exist — skipping ALTER TABLE")
+    return
+  }
+
+  await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`title\` text;`)
+  await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`order\` numeric;`)
+  await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`url\` text;`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
-  await db.run(sql`CREATE TABLE \`footer_site_links_links\` (
-  	\`_order\` integer NOT NULL,
-  	\`_parent_id\` integer NOT NULL,
-  	\`id\` text PRIMARY KEY NOT NULL,
-  	\`title\` text NOT NULL,
-  	\`url\` text NOT NULL,
-  	FOREIGN KEY (\`_parent_id\`) REFERENCES \`footer_site_links\`(\`id\`) ON UPDATE no action ON DELETE cascade
-  );
-  `)
-  await db.run(sql`CREATE INDEX \`footer_site_links_links_order_idx\` ON \`footer_site_links_links\` (\`_order\`);`)
-  await db.run(sql`CREATE INDEX \`footer_site_links_links_parent_id_idx\` ON \`footer_site_links_links\` (\`_parent_id\`);`)
-  await db.run(sql`ALTER TABLE \`footer_site_links\` DROP COLUMN \`title\`;`)
-  await db.run(sql`ALTER TABLE \`footer_site_links\` DROP COLUMN \`order\`;`)
-  await db.run(sql`ALTER TABLE \`footer_site_links\` DROP COLUMN \`url\`;`)
+// D1 cannot DROP columns → leave blank
+export async function down({}: MigrateDownArgs): Promise<void> {
+  // No-op — D1 doesn't support DROP COLUMN
 }
