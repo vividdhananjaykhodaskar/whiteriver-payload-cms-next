@@ -1,7 +1,7 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-d1-sqlite'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
-  await db.run(sql`DROP TABLE \`footer_site_links_links\`;`)
+await db.run(sql`DROP TABLE IF EXISTS \`footer_site_links_links\`;`)
   await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`title\` text NOT NULL;`)
   await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`order\` numeric NOT NULL;`)
   await db.run(sql`ALTER TABLE \`footer_site_links\` ADD \`url\` text NOT NULL;`)
