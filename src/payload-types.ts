@@ -74,7 +74,7 @@ export interface Config {
     services: Service;
     'sister-sites': SisterSite;
     'book-store': BookStore;
-    'footer-links': FooterLink;
+    'footer-link': FooterLink;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -89,7 +89,7 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     'sister-sites': SisterSitesSelect<false> | SisterSitesSelect<true>;
     'book-store': BookStoreSelect<false> | BookStoreSelect<true>;
-    'footer-links': FooterLinksSelect<false> | FooterLinksSelect<true>;
+    'footer-link': FooterLinkSelect<false> | FooterLinkSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -273,7 +273,7 @@ export interface BookStore {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer-links".
+ * via the `definition` "footer-link".
  */
 export interface FooterLink {
   id: number;
@@ -337,7 +337,7 @@ export interface PayloadLockedDocument {
         value: number | BookStore;
       } | null)
     | ({
-        relationTo: 'footer-links';
+        relationTo: 'footer-link';
         value: number | FooterLink;
       } | null);
   globalSlug?: string | null;
@@ -494,9 +494,9 @@ export interface BookStoreSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer-links_select".
+ * via the `definition` "footer-link_select".
  */
-export interface FooterLinksSelect<T extends boolean = true> {
+export interface FooterLinkSelect<T extends boolean = true> {
   title?: T;
   order?: T;
   isActive?: T;

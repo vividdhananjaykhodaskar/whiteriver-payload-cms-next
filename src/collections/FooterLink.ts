@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
-export const FooterLinks : CollectionConfig = {
-  slug: 'footer-links',
+export const FooterLink : CollectionConfig = {
+  slug: 'footer-link',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'order', 'isActive', 'url'],
