@@ -850,83 +850,6 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "footer_links": {
-      "name": "footer_links",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "title": {
-          "name": "title",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "order": {
-          "name": "order",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "is_active": {
-          "name": "is_active",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": true
-        },
-        "url": {
-          "name": "url",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "(strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "(strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))"
-        }
-      },
-      "indexes": {
-        "footer_links_updated_at_idx": {
-          "name": "footer_links_updated_at_idx",
-          "columns": [
-            "updated_at"
-          ],
-          "isUnique": false
-        },
-        "footer_links_created_at_idx": {
-          "name": "footer_links_created_at_idx",
-          "columns": [
-            "created_at"
-          ],
-          "isUnique": false
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
     "payload_kv": {
       "name": "payload_kv",
       "columns": {
@@ -1107,13 +1030,6 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
-        },
-        "footer_links_id": {
-          "name": "footer_links_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
         }
       },
       "indexes": {
@@ -1184,13 +1100,6 @@
           "name": "payload_locked_documents_rels_book_store_id_idx",
           "columns": [
             "book_store_id"
-          ],
-          "isUnique": false
-        },
-        "payload_locked_documents_rels_footer_links_id_idx": {
-          "name": "payload_locked_documents_rels_footer_links_id_idx",
-          "columns": [
-            "footer_links_id"
           ],
           "isUnique": false
         }
@@ -1293,19 +1202,6 @@
           "tableTo": "book_store",
           "columnsFrom": [
             "book_store_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "payload_locked_documents_rels_footer_links_fk": {
-          "name": "payload_locked_documents_rels_footer_links_fk",
-          "tableFrom": "payload_locked_documents_rels",
-          "tableTo": "footer_links",
-          "columnsFrom": [
-            "footer_links_id"
           ],
           "columnsTo": [
             "id"
