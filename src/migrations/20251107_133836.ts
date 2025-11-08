@@ -2,7 +2,7 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-d1-sqlite'
 
 export async function up({ db }: MigrateUpArgs): Promise<void> {
   // Drop old relation table safely
-  await db.run(sql`DROP TABLE IF EXISTS \`footer_site_links_links\`;`)
+await db.run(sql`DROP TABLE IF EXISTS \`footer_site_links\`;`)
 
   // Check whether main table exists
   const table = await db.get(
