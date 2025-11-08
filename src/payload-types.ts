@@ -74,7 +74,6 @@ export interface Config {
     services: Service;
     'sister-sites': SisterSite;
     'book-store': BookStore;
-    'footer-link': FooterLink;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -89,7 +88,6 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     'sister-sites': SisterSitesSelect<false> | SisterSitesSelect<true>;
     'book-store': BookStoreSelect<false> | BookStoreSelect<true>;
-    'footer-link': FooterLinkSelect<false> | FooterLinkSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -275,15 +273,7 @@ export interface BookStore {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer-link".
  */
-export interface FooterLink {
-  id: number;
-  title: string;
-  order: number;
-  isActive?: boolean | null;
-  url: string;
-  updatedAt: string;
-  createdAt: string;
-}
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
@@ -336,10 +326,6 @@ export interface PayloadLockedDocument {
         relationTo: 'book-store';
         value: number | BookStore;
       } | null)
-    | ({
-        relationTo: 'footer-link';
-        value: number | FooterLink;
-      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -496,14 +482,7 @@ export interface BookStoreSelect<T extends boolean = true> {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer-link_select".
  */
-export interface FooterLinkSelect<T extends boolean = true> {
-  title?: T;
-  order?: T;
-  isActive?: T;
-  url?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
