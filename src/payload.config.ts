@@ -48,13 +48,13 @@ export default buildConfig({
 
   // ✅ Add this CORS + CSRF configuration
   cors: [
-    'https://whiteriver-landing-page-one.web.app/',
-    'https://whiteriver-landing-page-two.web.app/', // your Firebase app
+    'https://whiteriver-landing-page-one.web.app',
+    'https://whiteriver-landing-page-two.web.app', // your Firebase app
     'http://localhost:3000', // optional, for local testing
   ],
   csrf: [
-    'https://whiteriver-landing-page-one.web.app/',
-    'https://whiteriver-landing-page-two.web.app/', // your Firebase app
+    'https://whiteriver-landing-page-one.web.app',
+    'https://whiteriver-landing-page-two.web.app', // your Firebase app
     'http://localhost:3000', // optional, for local testing
   ],
   // database-adapter-config-start
