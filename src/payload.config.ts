@@ -45,13 +45,6 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-
-  // ✅ Add this CORS + CSRF configuration
-  cors: [
-    'https://whiteriver-landing-page-one.web.app/',
-    'https://whiteriver-landing-page-two.web.app/', // your Firebase app
-    'http://localhost:3000', // optional, for local testing
-  ],
   // database-adapter-config-start
   db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),
   // database-adapter-config-end
